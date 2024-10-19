@@ -1,6 +1,6 @@
-import autoprefixer from 'autoprefixer'
 import nested from 'postcss-nested'
 import customMedia from 'postcss-custom-media'
+import autoprefixer from 'autoprefixer'
 import postcssGlobalData from '@csstools/postcss-global-data'
 
 const config = {
