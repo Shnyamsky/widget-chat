@@ -1,8 +1,10 @@
 Thumbs.db
+.vscode/*
+.idea
 .DS_Store
+
 node_modules
 /build
-/.svelte-kit
 /package
 .env
 .env.*
