@@ -1,17 +1,18 @@
-@import 'styles/palette.pcss';
-@import 'styles/spacings.pcss';
-@import 'styles/typography.pcss';
+@import 'styles/colors.pcss';
+@import 'styles/fonts.pcss';
+@import 'styles/vars.pcss';
+@import 'styles/theme.pcss';
 
-#app {
-	/* color-scheme: light dark; */
+#wavix-chat-widget-root {
+	position: fixed;
+	right: var(--spacing-40);
+	bottom: var(--spacing-40);
+	z-index: var(--widget-z-index);
+}
+
+.wavix-chat-widget {
 	margin: 0;
-	background-color: var(--background-color);
 	padding: 0;
-	min-height: 100vh;
-	color: var(--text-color);
-
-	font: var(--font-base);
-	font-weight: var(--font-weight-base);
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;

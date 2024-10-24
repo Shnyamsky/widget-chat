@@ -1,12 +1,10 @@
 <script lang="ts">
+	import Layout from './components/Layout.svelte'
+	import Header from './components/Header.svelte'
 </script>
 
-<main>
-	<div class="wavix-chat-widget">Chat widget</div>
-</main>
-
-<style>
-	.wavix-chat-widget {
-		display: flex;
-	}
-</style>
+<div class="wavix-chat-widget">
+	<Layout>
+		<Header />
+	</Layout>
+</div>
