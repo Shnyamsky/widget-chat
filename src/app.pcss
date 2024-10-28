@@ -3,38 +3,38 @@
 @import 'styles/vars.pcss';
 @import 'styles/theme.pcss';
 
-#wavix-chat-widget-root {
-	position: fixed;
-	right: var(--spacing-40);
-	bottom: var(--spacing-40);
-	z-index: var(--widget-z-index);
-}
-
-.wavix-chat-widget {
-	margin: 0;
-	padding: 0;
-
+:root {
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
 
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-		user-select: auto;
-	}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	user-select: auto;
+}
 
-	a {
-		cursor: default;
-		text-decoration: none;
-	}
+a {
+	cursor: default;
+	text-decoration: none;
+}
 
-	button:focus,
-	button:focus-visible {
-		outline: var(--spacing-2) auto -webkit-focus-ring-color;
-	}
+button:focus,
+button:focus-visible {
+	outline: var(--spacing-2) auto -webkit-focus-ring-color;
+}
+
+#chat-widget-root {
+	position: fixed;
+	right: var(--spacing-40);
+	bottom: var(--spacing-40);
+	z-index: var(--widget-z-index);
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }

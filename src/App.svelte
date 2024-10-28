@@ -3,8 +3,8 @@
 	import Header from './components/Header.svelte'
 </script>
 
-<div class="wavix-chat-widget">
+<main>
 	<Layout>
 		<Header />
 	</Layout>
-</div>
+</main>
