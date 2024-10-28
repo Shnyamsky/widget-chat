@@ -9,12 +9,18 @@
 		"checkJs": true,
 		"isolatedModules": true,
 		"moduleDetection": "force",
-		"moduleResolution": "Node"
+		"moduleResolution": "Node",
 		// "strict": true,
 		// "esModuleInterop": true,
 		// "forceConsistentCasingInFileNames": true,
 		// "skipLibCheck": true,
 		// "sourceMap": true,
+		"paths": {
+			"$lib/*": ["./src/lib/*"],
+			"$components/*": ["./src/components/*"],
+			"$assets/*": ["./src/assets/*"],
+			"$styles/*": ["./src/styles/*"]
+		}
 	},
 	"include": ["src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],
 	"exclude": ["node_modules"],
