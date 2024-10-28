@@ -3,6 +3,8 @@
 
 	const RIPPLE_ANIMATION_DURATION = 800
 
+	export let customClass = ''
+	export let size: 'small' | 'medium' = 'medium'
 	export let type: 'button' | 'submit' = 'button'
 	export let variant: 'primary' | 'secondary' = 'primary'
 	export let disabled = false
@@ -29,13 +31,16 @@
 			ripple.remove()
 		}, RIPPLE_ANIMATION_DURATION)
 	}
-
-	const onClick = (event: MouseEvent) => {
-		dispatch('click')
-	}
 </script>
 
-<button class={`button ${variant}`} {type} {disabled} on:click={onClick}>
+<button
+	class={`button ${customClass} ${size} ${variant}`}
+	{type}
+	{disabled}
+	on:click={() => {
+		dispatch('click')
+	}}
+>
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="button-inner" on:mousedown={rippleEffect}>
 		<div class="button-content"><slot /></div>
@@ -44,10 +49,8 @@
 
 <style lang="postcss">
 	.button {
-		--extra-spacing-12: 12px;
-
-		--button-height: 48px;
-		--button-border-width: 2px;
+		--btn-small-size: 32px;
+		--btn-medium-size: 48px;
 
 		--inner-z-index: 1;
 		--inner-before-z-index: -3;
@@ -59,7 +62,6 @@
 
 		border-radius: var(--border-radius-4);
 		background-color: inherit;
-		height: var(--button-height);
 		overflow: hidden;
 		user-select: none;
 
@@ -72,7 +74,8 @@
 			will-change: color, background-color;
 			cursor: pointer;
 			border-radius: inherit;
-			padding: var(--extra-spacing-12) var(--spacing-24);
+			width: 100%;
+			height: 100%;
 
 			&::before {
 				position: absolute;
@@ -102,9 +105,12 @@
 			}
 
 			.button-content {
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				z-index: var(--content-z-index);
-				font: var(--font-16-lh24);
-				font-weight: var(--font-weight-500);
+				width: 100%;
+				height: 100%;
 			}
 
 			:global(.button-ripple) {
@@ -130,6 +136,30 @@
 			.button-inner::after {
 				width: 100%;
 			}
+		}
+	}
+
+	.button.small {
+		--button-border-width: 1px;
+
+		min-width: var(--btn-small-size);
+		height: var(--btn-small-size);
+
+		.button-content {
+			font: var(--font-14-lh22);
+			font-weight: var(--font-weight-500);
+		}
+	}
+
+	.button.medium {
+		--button-border-width: 2px;
+
+		min-width: var(--btn-medium-size);
+		height: var(--btn-medium-size);
+
+		.button-content {
+			font: var(--font-16-lh24);
+			font-weight: var(--font-weight-500);
 		}
 	}
 
