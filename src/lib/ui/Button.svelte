@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte'
 
-	const RIPPLE_ANIMATION_DURATION = 800
+	type Ripple = { x: number; y: number; id: string }
 
 	export let customClass = ''
 	export let size: 'small' | 'medium' = 'medium'
@@ -9,28 +9,28 @@
 	export let variant: 'primary' | 'secondary' = 'primary'
 	export let disabled = false
 
+	const RIPPLE_ANIMATION_DURATION = 800
+
+	let ripples: Ripple[] = []
+
 	const dispatch = createEventDispatcher()
 
 	const rippleEffect = (event: MouseEvent) => {
-		const ripple = document.createElement('div')
-		ripple.classList.add('button-ripple')
-		;(event.currentTarget as HTMLDivElement).appendChild(ripple)
-
 		const rect = (event.currentTarget as HTMLDivElement).getBoundingClientRect()
 		const x = event.clientX - rect.left
 		const y = event.clientY - rect.top
+		const id = Math.random().toString()
 
-		ripple.style.left = `${x}px`
-		ripple.style.top = `${y}px`
+		ripples = [...ripples, { x, y, id }]
 
 		setTimeout(() => {
-			ripple.remove()
+			ripples = ripples.filter((ripple) => ripple.id !== id)
 		}, RIPPLE_ANIMATION_DURATION)
 	}
 </script>
 
 <button
-	class={`button ${customClass} ${size} ${variant}`}
+	class="button {customClass} {size} {variant}"
 	class:disabled
 	{type}
 	{disabled}
@@ -41,6 +41,10 @@
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="button-inner" on:mousedown={rippleEffect}>
 		<div class="button-content"><slot /></div>
+
+		{#each ripples as ripple (ripple.id)}
+			<div class="button-ripple" style:left="{ripple.x}px" style:top="{ripple.y}px" />
+		{/each}
 	</div>
 </button>
 
@@ -58,6 +62,7 @@
 		--ripple-animation-duration: 0.8s;
 
 		border-radius: var(--border-radius-4);
+		/* TODO change to transparent */
 		background-color: inherit;
 		overflow: hidden;
 		user-select: none;
@@ -110,7 +115,7 @@
 				height: 100%;
 			}
 
-			:global(.button-ripple) {
+			.button-ripple {
 				position: absolute;
 				transform: translate(-50%, -50%);
 				opacity: 0;
@@ -173,7 +178,7 @@
 				background-color: var(--btn-primary-bg-hover);
 			}
 
-			:global(.button-ripple) {
+			.button-ripple {
 				background-color: var(--btn-primary-ripple);
 			}
 		}
@@ -209,7 +214,7 @@
 				background-color: var(--btn-secondary-bg-hover);
 			}
 
-			:global(.button-ripple) {
+			.button-ripple {
 				background-color: var(--btn-secondary-ripple);
 			}
 		}

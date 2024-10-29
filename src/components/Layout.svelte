@@ -1,7 +1,7 @@
 <script lang="ts"></script>
 
 <div class="layout">
-	<slot name="header" />
+	{#if $$slots.header}<slot name="header" />{/if}
 	<slot name="container" />
 </div>
 

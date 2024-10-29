@@ -20,17 +20,16 @@
 		<Header slot="header" />
 		<Container slot="container">
 			<form class="form" on:submit|preventDefault={onSubmit}>
-				<!-- <Input
-					id="input"
+				<Input
 					name="input"
-					label="your question"
+					label="Your question"
+					error=""
 					{value}
 					on:change={({ detail }) => {
 						value = detail
 					}}
-				/> -->
+				/>
 				<Button type="submit" variant="secondary"><p class="btn">Button template</p></Button>
-				<Button type="submit" size="small"><p class="btn">Button template</p></Button>
 			</form>
 		</Container>
 	</Layout>
@@ -40,12 +39,11 @@
 	.form {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		gap: var(--spacing-16);
-		/* width: 100%; */
+		width: 100%;
 	}
 
 	.btn {
-		/* width: 150px; */
+		width: 150px;
 	}
 </style>
