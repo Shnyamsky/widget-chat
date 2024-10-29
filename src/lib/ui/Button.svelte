@@ -12,15 +12,11 @@
 	const dispatch = createEventDispatcher()
 
 	const rippleEffect = (event: MouseEvent) => {
-		const btnInner = event.currentTarget as HTMLElement
-
-		if (!btnInner) return
-
 		const ripple = document.createElement('div')
 		ripple.classList.add('button-ripple')
-		btnInner.appendChild(ripple)
+		;(event.currentTarget as HTMLDivElement).appendChild(ripple)
 
-		const rect = btnInner.getBoundingClientRect()
+		const rect = (event.currentTarget as HTMLDivElement).getBoundingClientRect()
 		const x = event.clientX - rect.left
 		const y = event.clientY - rect.top
 
@@ -35,6 +31,7 @@
 
 <button
 	class={`button ${customClass} ${size} ${variant}`}
+	class:disabled
 	{type}
 	{disabled}
 	on:click={() => {
@@ -124,7 +121,7 @@
 			}
 		}
 
-		&:disabled {
+		&.disabled {
 			pointer-events: none;
 
 			.button-inner {
@@ -132,7 +129,7 @@
 			}
 		}
 
-		&:not(:disabled):hover {
+		&:not(.disabled):hover {
 			.button-inner::after {
 				width: 100%;
 			}
@@ -181,7 +178,7 @@
 			}
 		}
 
-		&:disabled {
+		&.disabled {
 			.button-inner {
 				background-color: var(--btn-primary-bg-disabled);
 				color: var(--btn-primary-text-disabled);
@@ -192,7 +189,7 @@
 			}
 		}
 
-		&:not(:disabled):hover {
+		&:not(.disabled):hover {
 			.button-inner {
 				color: var(--btn-primary-text-hover);
 			}
@@ -217,7 +214,7 @@
 			}
 		}
 
-		&:disabled {
+		&.disabled {
 			.button-inner {
 				background-color: var(--btn-secondary-bg-disabled);
 				color: var(--btn-secondary-text-disabled);
@@ -228,7 +225,7 @@
 			}
 		}
 
-		&:not(:disabled):hover {
+		&:not(.disabled):hover {
 			.button-inner {
 				color: var(--btn-secondary-text-hover);
 			}

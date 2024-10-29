@@ -18,13 +18,13 @@
 		grid-template-columns: 24px auto 24px;
 		column-gap: var(--spacing-16);
 		align-items: center;
-		background-color: var(--header-background-color);
+		background-color: var(--header-bg);
 		padding: 12px var(--spacing-16);
 		width: 100%;
 	}
 
 	.header-title {
-		color: var(--header-text-color);
+		color: var(--header-text);
 		font: var(--font-16-lh24);
 		font-weight: var(--font-weight-500);
 	}
