@@ -2,8 +2,8 @@ import App from './App.svelte'
 
 import './app.pcss'
 
-const wavixChatWidget = new App({
+const chatWidget = new App({
 	target: document.getElementById('chat-widget-root')!
 })
 
-export default wavixChatWidget
+export default chatWidget

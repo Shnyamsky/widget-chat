@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte'
 
+	export let customClass = ''
 	export let type = 'text'
-	export let name = 'input-name'
+	export let name = 'inputName'
+	export let value = ''
 	export let label = ''
 	export let error = ''
-	export let value = ''
-	// TODO: add secondary styles
 	export let variant: 'primary' | 'secondary' = 'primary'
 
 	const dispatch = createEventDispatcher()
@@ -19,7 +19,7 @@
 	}
 </script>
 
-<div class="input-wrapper {variant}" class:error>
+<div class="input-wrapper {customClass} {variant}" class:error>
 	<div class="input-inner" class:with-value={value}>
 		{#if label}
 			<label for={name} class="label">{label}</label>
@@ -35,7 +35,7 @@
 
 <style lang="postcss">
 	.input-wrapper {
-		--input-wrapper-width: 100px;
+		--input-wrapper-min-width: 100px;
 
 		--input-inner-height: 48px;
 
@@ -47,8 +47,7 @@
 		flex-direction: column;
 		gap: var(--spacing-4);
 		width: 100%;
-		min-width: var(--input-wrapper-width);
-		height: 100%;
+		min-width: var(--input-wrapper-min-width);
 	}
 
 	.input-inner {
@@ -59,11 +58,22 @@
 		width: 100%;
 		height: var(--input-inner-height);
 
+		&:has(.input:focus) .underline::after {
+			right: 0;
+			width: 100%;
+		}
+
+		&.with-value .label,
+		&:has(.input:focus) .label {
+			transform: translateY(calc(var(--underline-height) * -2 - var(--input-height)));
+			font: var(--font-10-lh16);
+		}
+
 		.label {
 			position: absolute;
 			bottom: var(--underline-height);
 			left: 0;
-			/* TODO: fix line height animation */
+			/* TODO: refactor line height animation */
 			transition-duration: var(--duration-2);
 			transition-property: font, color, transform;
 			transition-timing-function: var(--timing-function-2);
@@ -72,7 +82,6 @@
 			overflow: hidden;
 			font: var(--font-18-lh28);
 			font-weight: var(--font-weight-400);
-			/* TODO: refactor ellipsis */
 			text-overflow: ellipsis;
 			white-space: nowrap;
 		}
@@ -83,6 +92,12 @@
 			height: var(--input-height);
 			font: var(--font-18-lh28);
 			font-weight: var(--font-weight-400);
+
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
 		}
 
 		.underline {
@@ -95,6 +110,7 @@
 				right: 0;
 				bottom: 0;
 				transition: background-color var(--duration-2) var(--timing-function-2);
+				will-change: background-color;
 				width: 100%;
 				height: calc(var(--underline-height) / 2);
 				content: '';
@@ -108,44 +124,20 @@
 				transition-duration: var(--duration-2);
 				transition-property: width, right;
 				transition-timing-function: var(--timing-function-2);
+				will-change: width, right;
 				width: 0;
 				height: var(--underline-height);
 				content: '';
 			}
 		}
-
-		/* TODO: change copy styles */
-		&.with-value {
-			.label {
-				transform: translateY(calc(var(--underline-height) * -2 - var(--input-height)));
-				font: var(--font-10-lh16);
-			}
-		}
-
-		&:has(.input:focus) {
-			.label {
-				transform: translateY(calc(var(--underline-height) * -2 - var(--input-height)));
-				font: var(--font-10-lh16);
-			}
-
-			.underline {
-				&::after {
-					right: 0;
-					width: 100%;
-				}
-			}
-		}
 	}
 
 	.error-message {
-		display: flex;
-		align-items: center;
 		width: 100%;
 		height: var(--error-height);
 		overflow: hidden;
 		font: var(--font-12-lh16);
 		font-weight: var(--font-weight-300);
-		/* TODO: refactor */
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
@@ -193,6 +185,9 @@
 		}
 	}
 
+	/* TODO: add secondary variant */
+	/* .input-wrapper.secondary:not(.error) {} */
+
 	.input-wrapper.error {
 		.input-inner {
 			.label {
@@ -212,6 +207,12 @@
 				&::after {
 					background-color: var(--input-primary-underline-error);
 				}
+			}
+		}
+
+		.input-inner:has(.input:focus) {
+			.label {
+				color: var(--input-primary-label-text-error);
 			}
 		}
 

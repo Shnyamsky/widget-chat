@@ -4,10 +4,10 @@
 	type Ripple = { x: number; y: number; id: string }
 
 	export let customClass = ''
-	export let size: 'small' | 'medium' = 'medium'
 	export let type: 'button' | 'submit' = 'button'
-	export let variant: 'primary' | 'secondary' = 'primary'
 	export let disabled = false
+	export let size: 'small' | 'medium' = 'medium'
+	export let variant: 'primary' | 'secondary' = 'primary'
 
 	const RIPPLE_ANIMATION_DURATION = 800
 
@@ -40,7 +40,13 @@
 >
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="button-inner" on:mousedown={rippleEffect}>
-		<div class="button-content"><slot /></div>
+		<div class="button-content">
+			{#if $$slots.icon}
+				<slot name="icon" />
+			{:else}
+				<div class="button-content-inner"><slot /></div>
+			{/if}
+		</div>
 
 		{#each ripples as ripple (ripple.id)}
 			<div class="button-ripple" style:left="{ripple.x}px" style:top="{ripple.y}px" />
@@ -62,7 +68,6 @@
 		--ripple-animation-duration: 0.8s;
 
 		border-radius: var(--border-radius-4);
-		/* TODO change to transparent */
 		background-color: inherit;
 		overflow: hidden;
 		user-select: none;
@@ -150,6 +155,10 @@
 		.button-content {
 			font: var(--font-14-lh22);
 			font-weight: var(--font-weight-500);
+
+			.button-content-inner {
+				padding: 0 var(--spacing-8);
+			}
 		}
 	}
 
@@ -162,6 +171,10 @@
 		.button-content {
 			font: var(--font-16-lh24);
 			font-weight: var(--font-weight-500);
+
+			.button-content-inner {
+				padding: 0 var(--spacing-24);
+			}
 		}
 	}
 

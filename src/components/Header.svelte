@@ -1,21 +1,22 @@
 <script lang="ts">
-	import ChatIcon from '$lib/icons/ChatIcon.svelte'
-	import CloseIcon from '$lib/icons/CloseIcon.svelte'
+	import Icon from '$components/Icon.svelte'
 </script>
 
 <div class="header">
-	<ChatIcon />
+	<Icon name="chatIcon" />
 	<h3 class="header-title">Have a question?</h3>
 
 	<button class="header-button">
-		<CloseIcon />
+		<Icon name="closeIcon" />
 	</button>
 </div>
 
 <style lang="postcss">
 	.header {
+		--button-size: 24px;
+
 		display: grid;
-		grid-template-columns: 24px auto 24px;
+		grid-template-columns: 24px auto var(--button-size);
 		column-gap: var(--spacing-16);
 		align-items: center;
 		background-color: var(--header-bg);
@@ -31,8 +32,8 @@
 
 	.header-button {
 		cursor: pointer;
-		background-color: inherit;
-		width: 24px;
-		height: 24px;
+		background-color: transparent;
+		width: var(--button-size);
+		height: var(--button-size);
 	}
 </style>
