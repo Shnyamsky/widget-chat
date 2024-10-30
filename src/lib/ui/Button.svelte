@@ -11,9 +11,9 @@
 
 	const RIPPLE_ANIMATION_DURATION = 800
 
-	let ripples: Ripple[] = []
-
 	const dispatch = createEventDispatcher()
+
+	let ripples: Ripple[] = []
 
 	const rippleEffect = (event: MouseEvent) => {
 		const rect = (event.currentTarget as HTMLDivElement).getBoundingClientRect()

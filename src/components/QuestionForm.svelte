@@ -2,18 +2,30 @@
 	import Button from '$lib/ui/Button.svelte'
 	import Input from '$lib/ui/Input.svelte'
 
-	let value = ''
+	let email = ''
+	let question = ''
 
 	const onSubmit = (event: Event) => {
 		const formData = new FormData(event.target as HTMLFormElement)
 
-		const inputName = formData.get('input')
+		const emailValue = formData.get('email')
+		const questionValue = formData.get('question')
+
+		console.log(emailValue, questionValue)
 	}
 </script>
 
 <form class="form" on:submit|preventDefault={onSubmit}>
-	<Input />
-	<Button type="submit" variant="secondary">Button template</Button>
+	<Input label="Email" name="email" value={email} on:change={({ detail }) => (email = detail)} />
+	<Input
+		textarea
+		label="Your question"
+		maxRows={4}
+		name="question"
+		value={question}
+		on:change={({ detail }) => (question = detail)}
+	/>
+	<Button type="submit">Send question</Button>
 </form>
 
 <style lang="postcss">

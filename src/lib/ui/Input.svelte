@@ -8,24 +8,56 @@
 	export let label = ''
 	export let error = ''
 	export let variant: 'primary' | 'secondary' = 'primary'
+	export let textarea = false
+	export let maxRows = 1
+
+	const INPUT_ROW_HEIGHT = 28
 
 	const dispatch = createEventDispatcher()
 
+	let textareaRef: HTMLTextAreaElement
+
+	const onResizeTextarea = () => {
+		if (textareaRef) {
+			textareaRef.style.height = 'auto'
+			textareaRef.style.height = `${textareaRef.scrollHeight}px`
+		}
+	}
+
 	const onInput = (event: Event) => {
-		const _value = (event.target as HTMLInputElement).value
+		if (textarea) {
+			onResizeTextarea()
+		}
+
+		const _value = (event.target as HTMLInputElement | HTMLTextAreaElement).value
 
 		dispatch('change', _value)
-		;(event.target as HTMLInputElement).value = value
+		;(event.target as HTMLInputElement | HTMLTextAreaElement).value = value
 	}
 </script>
 
 <div class="input-wrapper {customClass} {variant}" class:error>
 	<div class="input-inner" class:with-value={value}>
 		{#if label}
-			<label for={name} class="label">{label}</label>
+			<label for={name} class="label">
+				<span class="label-text">{label}</span>
+			</label>
 		{/if}
 
-		<input class="input" id={name} {type} {name} {value} on:input={onInput} />
+		{#if textarea}
+			<textarea
+				bind:this={textareaRef}
+				class="input textarea"
+				style:max-height="{maxRows * INPUT_ROW_HEIGHT}px"
+				id={name}
+				{name}
+				{value}
+				rows={1}
+				on:input={onInput}
+			/>
+		{:else}
+			<input class="input" id={name} {type} {name} {value} on:input={onInput} />
+		{/if}
 
 		<div class="underline" />
 	</div>
@@ -37,10 +69,13 @@
 	.input-wrapper {
 		--input-wrapper-min-width: 100px;
 
-		--input-inner-height: 48px;
-
-		--input-height: 28px;
+		--input-min-height: 28px;
+		--label-height: 18px;
 		--underline-height: 2px;
+		--input-inner-min-height: calc(
+			var(--label-height) + var(--input-min-height) + var(--underline-height)
+		);
+
 		--error-height: 16px;
 
 		display: flex;
@@ -52,44 +87,50 @@
 
 	.input-inner {
 		display: flex;
-		position: relative;
 		flex-direction: column;
 		justify-content: flex-end;
 		width: 100%;
-		height: var(--input-inner-height);
+		min-height: var(--input-inner-min-height);
 
 		&:has(.input:focus) .underline::after {
 			right: 0;
 			width: 100%;
 		}
 
-		&.with-value .label,
-		&:has(.input:focus) .label {
-			transform: translateY(calc(var(--underline-height) * -2 - var(--input-height)));
+		&.with-value .label .label-text,
+		&:has(.input:focus) .label .label-text {
+			transform: translateY(0);
 			font: var(--font-10-lh16);
 		}
 
 		.label {
-			position: absolute;
-			bottom: var(--underline-height);
-			left: 0;
-			/* TODO: refactor line height animation */
-			transition-duration: var(--duration-2);
-			transition-property: font, color, transform;
-			transition-timing-function: var(--timing-function-2);
-			will-change: font, color, transform;
+			position: relative;
 			width: 100%;
-			overflow: hidden;
-			font: var(--font-18-lh28);
-			font-weight: var(--font-weight-400);
-			text-overflow: ellipsis;
-			white-space: nowrap;
+			height: var(--label-height);
+
+			.label-text {
+				position: absolute;
+				top: 0;
+				left: 0;
+				/* TODO: refactor line height animation */
+				transform: translateY(var(--label-height));
+				transition-duration: var(--duration-2);
+				transition-property: font, color, transform;
+				transition-timing-function: var(--timing-function-2);
+				will-change: font, color, transform;
+				width: 100%;
+				overflow: hidden;
+				font: var(--font-18-lh28);
+				font-weight: var(--font-weight-400);
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
 		}
 
 		.input {
 			background-color: transparent;
 			width: 100%;
-			height: var(--input-height);
+			min-height: var(--input-min-height);
 			font: var(--font-18-lh28);
 			font-weight: var(--font-weight-400);
 
@@ -97,6 +138,14 @@
 			&::-webkit-inner-spin-button {
 				-webkit-appearance: none;
 				margin: 0;
+			}
+		}
+
+		.textarea {
+			resize: none;
+
+			&::-webkit-scrollbar {
+				width: 0;
 			}
 		}
 
@@ -146,7 +195,7 @@
 		.input-inner {
 			background-color: var(--input-primary-bg);
 
-			.label {
+			.label .label-text {
 				color: var(--input-primary-label-text);
 			}
 
@@ -167,13 +216,13 @@
 		}
 
 		.input-inner:has(.input:focus) {
-			.label {
+			.label .label-text {
 				color: var(--input-primary-label-text-focus);
 			}
 		}
 
 		.input-inner:hover {
-			.label {
+			.label .label-text {
 				color: var(--input-primary-label-text-hover);
 			}
 
@@ -190,7 +239,7 @@
 
 	.input-wrapper.error {
 		.input-inner {
-			.label {
+			.label .label-text {
 				color: var(--input-primary-label-text-error);
 			}
 
@@ -211,7 +260,7 @@
 		}
 
 		.input-inner:has(.input:focus) {
-			.label {
+			.label .label-text {
 				color: var(--input-primary-label-text-error);
 			}
 		}

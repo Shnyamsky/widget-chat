@@ -8,6 +8,7 @@
 	let content = ''
 	$: content = icons[name]
 
+	// TODO: add lazy loading prop
 	// const loadIcon = async (name: string) => {
 	// 	const module = await import(`../assets/${name}.svg?raw`)
 
