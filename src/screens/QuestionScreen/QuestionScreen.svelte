@@ -1,6 +1,5 @@
 <script lang="ts">
-	import Button from '$lib/ui/Button.svelte'
-	import Input from '$lib/ui/Input.svelte'
+	import { Button, Input } from '$lib/ui'
 
 	let email = ''
 	let question = ''

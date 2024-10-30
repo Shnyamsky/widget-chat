@@ -1,16 +1,14 @@
 <script lang="ts">
-	import Layout from '$components/Layout.svelte'
-	import Header from '$components/Header.svelte'
-	import Container from '$components/Container.svelte'
+	import { Container, Header, Layout } from '$components/index'
 
-	import QuestionForm from '$components/QuestionForm.svelte'
+	import { QuestionScreen } from '$screens/index'
 </script>
 
 <main>
 	<Layout>
 		<Header slot="header" />
 		<Container slot="container">
-			<QuestionForm />
+			<QuestionScreen />
 		</Container>
 	</Layout>
 </main>
