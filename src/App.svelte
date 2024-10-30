@@ -1,14 +1,16 @@
 <script lang="ts">
 	import { Container, Header, Layout } from '$application/index'
+	import { routingStore } from '$store/index'
 
-	import { QuestionScreen } from '$screens/index'
+	let currentScreen = routingStore.$currentScreen
+	let screens = routingStore.$screens
 </script>
 
 <main>
 	<Layout>
 		<Header slot="header" />
 		<Container slot="container">
-			<QuestionScreen />
+			<svelte:component this={$screens[$currentScreen]} />
 		</Container>
 	</Layout>
 </main>

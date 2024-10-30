@@ -1,28 +1,28 @@
 <script lang="ts">
 	import { Button, Input } from '$components/index'
+	import { routingStore, questionStore } from '$store/index'
 
-	let email = ''
-	let question = ''
+	const form = questionStore.$form
 
 	const onSubmit = (event: Event) => {
-		const formData = new FormData(event.target as HTMLFormElement)
-
-		const emailValue = formData.get('email')
-		const questionValue = formData.get('question')
-
-		console.log(emailValue, questionValue)
+		routingStore.onRedirect('confirm')
 	}
 </script>
 
 <form class="form" on:submit|preventDefault={onSubmit}>
-	<Input label="Email" name="email" value={email} on:change={({ detail }) => (email = detail)} />
+	<Input
+		label="Email"
+		name="email"
+		value={$form.email}
+		on:change={questionStore.onFormChange('email')}
+	/>
 	<Input
 		textarea
 		label="Your question"
 		maxRows={4}
 		name="question"
-		value={question}
-		on:change={({ detail }) => (question = detail)}
+		value={$form.question}
+		on:change={questionStore.onFormChange('question')}
 	/>
 	<Button type="submit">Send question</Button>
 </form>
