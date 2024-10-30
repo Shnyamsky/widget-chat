@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Input } from '$components/index'
+	import { Button, Input } from '$shared/components/index'
 	import { routingStore, questionStore } from '$store/index'
 
 	const form = questionStore.$form

@@ -16,10 +16,10 @@
 		// "skipLibCheck": true,
 		// "sourceMap": true,
 		"paths": {
-			"$application/*": ["./src/application/*"],
 			"$assets/*": ["./src/assets/*"],
 			"$components/*": ["./src/components/*"],
 			"$screens/*": ["./src/screens/*"],
+			"$shared/*": ["./src/shared/*"],
 			"$store/*": ["./src/store/*"],
 			"$styles/*": ["./src/styles/*"]
 		}
