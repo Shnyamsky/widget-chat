@@ -1,6 +1,4 @@
-export { Container } from './Container'
-export { Header } from './Header'
-export { Icon } from './Icon'
-export { Layout } from './Layout'
-
-export { QuestionScreen } from './QuestionScreen'
+export { Container } from './container'
+export { Header } from './header'
+export { Icon } from './icon'
+export { Layout } from './layout'

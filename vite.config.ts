@@ -12,6 +12,7 @@ export default defineConfig({
 			$application: path.resolve(__dirname, './src/application'),
 			$assets: path.resolve(__dirname, './src/assets'),
 			$components: path.resolve(__dirname, './src/components'),
+			$screens: path.resolve(__dirname, './src/screens'),
 			$styles: path.resolve(__dirname, './src/styles')
 		}
 	}
