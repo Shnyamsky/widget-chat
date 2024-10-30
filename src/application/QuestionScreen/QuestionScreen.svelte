@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Input } from '$lib/ui'
+	import { Button, Input } from '$components/index'
 
 	let email = ''
 	let question = ''

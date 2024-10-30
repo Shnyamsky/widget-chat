@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Icon } from '$components/index'
+	import { Icon } from '$application/index'
 </script>
 
 <div class="header">

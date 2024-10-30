@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { Container, Header, Layout } from '$components/index'
-
-	import { QuestionScreen } from '$screens/index'
+	import { Container, Header, Layout, QuestionScreen } from '$application/index'
 </script>
 
 <main>

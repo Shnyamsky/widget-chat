@@ -16,10 +16,9 @@
 		// "skipLibCheck": true,
 		// "sourceMap": true,
 		"paths": {
+			"$application/*": ["./src/application/*"],
 			"$assets/*": ["./src/assets/*"],
 			"$components/*": ["./src/components/*"],
-			"$lib/*": ["./src/lib/*"],
-			"$screens/*": ["./src/screens/*"],
 			"$styles/*": ["./src/styles/*"]
 		}
 	},
