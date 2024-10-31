@@ -10,7 +10,7 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			$assets: path.resolve(__dirname, './src/assets'),
-			$components: path.resolve(__dirname, './src/components'),
+			$blocks: path.resolve(__dirname, './src/blocks'),
 			$screens: path.resolve(__dirname, './src/screens'),
 			$shared: path.resolve(__dirname, './src/shared'),
 			$store: path.resolve(__dirname, './src/store'),

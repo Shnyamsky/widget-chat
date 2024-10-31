@@ -1,9 +1,9 @@
 <script lang="ts">
 	import * as icons from '$assets/index'
 
-	type Icon = keyof typeof icons
+	type AppIcon = keyof typeof icons
 
-	export let name: Icon
+	export let name: AppIcon
 
 	let content = ''
 	$: content = icons[name]

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { Icon } from '$components/icon'
+	import { AppIcon } from '$blocks/app-icon'
 </script>
 
 <div class="header">
-	<Icon name="chatIcon" />
+	<AppIcon name="chatIcon" />
 	<h3 class="header-title">Have a question?</h3>
 
 	<button class="header-button">
-		<Icon name="closeIcon" />
+		<AppIcon name="closeIcon" />
 	</button>
 </div>
 
