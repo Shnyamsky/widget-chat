@@ -9,9 +9,7 @@
 	<p class="final-text">
 		Your request has been submitted.<br /> Our team will respond by email as soon as<br /> possible.
 	</p>
-	<Button variant="secondary" on:click={() => routingStore.onRedirect('question')}
-		>Close window</Button
-	>
+	<Button variant="secondary" on:click={() => routingStore.onRedirect('chat')}>Close window</Button>
 </div>
 
 <style lang="postcss">

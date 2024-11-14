@@ -3,7 +3,7 @@ import { atom } from 'nanostores'
 
 type Screen = 'chat' | 'confirm' | 'question'
 
-export const $screen = atom<Screen>('question')
+export const $screen = atom<Screen>('chat')
 
 export const onRedirect = (screen: Screen) => {
 	$screen.set(screen)
