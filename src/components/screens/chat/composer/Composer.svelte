@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Input, Button } from '$shared/components'
 
-	import { AppIcon } from '$components/app'
+	import { AppIcon } from '$components/index'
 
 	import { routingStore, chatStore } from '$store/index'
 

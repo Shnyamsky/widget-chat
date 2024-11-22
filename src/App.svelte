@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Container, Header, Layout } from '$components/app'
+	import { Container, Header, Layout } from '$components/index'
 	import * as screens from '$screens/index'
 	import { routingStore } from '$store/index'
 

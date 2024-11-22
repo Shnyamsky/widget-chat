@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Footer } from '$components/app'
+	import { Footer } from '$components/index'
 
 	import { Composer } from '$components/screens/chat'
 </script>

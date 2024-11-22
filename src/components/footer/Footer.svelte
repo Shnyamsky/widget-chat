@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AppIcon } from '$components/app'
+	import { AppIcon } from '$components/index'
 </script>
 
 <footer class="footer-wrapper">
