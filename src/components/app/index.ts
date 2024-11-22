@@ -1,7 +1,5 @@
 export { AppIcon } from './app-icon'
-export { Composer } from './composer'
 export { Container } from './container'
+export { Footer } from './footer'
 export { Header } from './header'
 export { Layout } from './layout'
-export { Question } from './question'
-export { Footer } from './footer'

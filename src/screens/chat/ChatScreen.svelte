@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { Composer, Footer } from '$blocks/index'
+	import { Footer } from '$components/app'
+
+	import { Composer } from '$components/screens/chat'
 </script>
 
 <div class="chat">

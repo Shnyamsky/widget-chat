@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Input, Button } from '$shared/components/index'
+	import { Input, Button } from '$shared/components'
 
-	import { AppIcon } from '$blocks/index'
+	import { AppIcon } from '$components/app'
 
-	import { routingStore, dialogStore } from '$store/index'
+	import { routingStore, chatStore } from '$store/index'
 
-	const form = dialogStore.$form
+	const form = chatStore.$form
 
 	const onSubmit = (event: Event) => {
 		routingStore.onRedirect('question')
@@ -15,8 +15,8 @@
 <form class="composer-form" on:submit|preventDefault={onSubmit}>
 	<Input
 		name="question"
-		value={$form.question}
-		on:change={dialogStore.onFormChange('question')}
+		value={$form.input}
+		on:change={chatStore.onFormChange('input')}
 		label="Your question"
 		textarea
 		maxRows={4}

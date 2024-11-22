@@ -1,0 +1,5 @@
+<script lang="ts"></script>
+
+<div></div>
+
+<style lang="postcss"></style>

@@ -17,7 +17,7 @@
 		// "sourceMap": true,
 		"paths": {
 			"$assets/*": ["./src/assets/*"],
-			"$blocks/*": ["./src/blocks/*"],
+			"$components/*": ["./src/components/*"],
 			"$screens/*": ["./src/screens/*"],
 			"$shared/*": ["./src/shared/*"],
 			"$store/*": ["./src/store/*"],

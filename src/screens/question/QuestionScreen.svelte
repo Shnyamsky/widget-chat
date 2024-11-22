@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Question } from '$blocks/index'
+	import { Form } from '$components/screens/question'
 </script>
 
 <div class="question">
-	<Question />
+	<Form />
 </div>
 
 <style lang="postcss">

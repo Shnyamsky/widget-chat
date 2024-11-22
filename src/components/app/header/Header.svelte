@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AppIcon } from '$blocks/app-icon'
+	import { AppIcon } from '$components/app'
 </script>
 
 <div class="header">

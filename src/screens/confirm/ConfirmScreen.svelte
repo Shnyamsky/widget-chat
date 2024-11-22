@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button } from '$shared/components/index'
+	import { Button } from '$shared/components'
 	import { routingStore } from '$store/index'
 </script>
 
