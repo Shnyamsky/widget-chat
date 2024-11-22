@@ -1,16 +1,22 @@
 <script lang="ts">
+	import { Container } from '$components/index'
+
 	import { Button } from '$shared/components'
 	import { routingStore } from '$store/index'
 </script>
 
-<div class="final">
-	<h1 class="final-header">Thank you!</h1>
-	<!-- TODO: change breaks and add font weights -->
-	<p class="final-text">
-		Your request has been submitted.<br /> Our team will respond by email as soon as<br /> possible.
-	</p>
-	<Button variant="secondary" on:click={() => routingStore.onRedirect('chat')}>Close window</Button>
-</div>
+<Container>
+	<div class="final">
+		<h1 class="final-header">Thank you!</h1>
+		<!-- TODO: change breaks and add font weights -->
+		<p class="final-text">
+			Your request has been submitted.<br /> Our team will respond by email as soon as<br /> possible.
+		</p>
+		<Button variant="secondary" on:click={() => routingStore.onRedirect('chat')}
+			>Close window</Button
+		>
+	</div>
+</Container>
 
 <style lang="postcss">
 	.final {

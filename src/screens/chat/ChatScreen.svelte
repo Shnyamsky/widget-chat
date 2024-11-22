@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { Footer } from '$components/index'
 
-	import { Composer } from '$components/screens/chat'
+	import { ChatArea, Composer } from '$components/screens/chat'
 </script>
 
 <div class="chat">
+	<div class="chat-area">
+		<ChatArea />
+	</div>
+
 	<div class="composer">
 		<Composer />
 	</div>
@@ -18,17 +22,34 @@
 	.chat {
 		display: grid;
 		grid-template-areas:
-			'chat'
+			'chat-area'
 			'composer'
 			'footer';
 		width: 100%;
 
+		.chat-area {
+			grid-area: chat-area;
+		}
+
 		.composer {
+			position: relative;
 			grid-area: composer;
+			padding: var(--spacing-16) var(--spacing-16) 0;
+
+			&::before {
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+				background-color: var(--chat-hr-color);
+				height: 1px;
+				content: '';
+			}
 		}
 
 		.footer {
 			grid-area: footer;
+			padding-bottom: var(--spacing-16);
 		}
 	}
 </style>

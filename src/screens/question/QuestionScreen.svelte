@@ -1,13 +1,8 @@
 <script lang="ts">
+	import { Container } from '$components/index'
 	import { Form } from '$components/screens/question'
 </script>
 
-<div class="question">
+<Container>
 	<Form />
-</div>
-
-<style lang="postcss">
-	.question {
-		width: 100%;
-	}
-</style>
+</Container>

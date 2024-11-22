@@ -1,14 +1,15 @@
 <script lang="ts">
+	import { Container } from '$components/index'
 	import { Button } from '$shared/components'
 	import { routingStore } from '$store/index'
 </script>
 
-<div class="not-found">
-	<h1 class="not-found-header">Screen not found</h1>
-	<Button variant="secondary" on:click={() => routingStore.onRedirect('question')}
-		>Go to chat</Button
-	>
-</div>
+<Container>
+	<div class="not-found">
+		<h1 class="not-found-header">Screen not found</h1>
+		<Button variant="secondary" on:click={() => routingStore.onRedirect('chat')}>Go to chat</Button>
+	</div>
+</Container>
 
 <style lang="postcss">
 	.not-found {
@@ -16,8 +17,6 @@
 		flex-direction: column;
 		align-items: center;
 		gap: var(--spacing-16);
-
-		margin: var(--spacing-8) 0 var(--spacing-16) 0;
 		width: 100%;
 	}
 

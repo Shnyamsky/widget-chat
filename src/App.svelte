@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Container, Header, Layout } from '$components/index'
+	import { Header, Layout } from '$components/index'
 	import * as screens from '$screens/index'
 	import { routingStore } from '$store/index'
 
@@ -22,8 +22,6 @@
 <main>
 	<Layout>
 		<Header slot="header" />
-		<Container slot="container">
-			<svelte:component this={currentScreen} />
-		</Container>
+		<svelte:component this={currentScreen} slot="content" />
 	</Layout>
 </main>

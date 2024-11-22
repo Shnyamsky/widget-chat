@@ -32,5 +32,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing-16);
+		width: 100%;
 	}
 </style>
