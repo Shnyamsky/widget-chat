@@ -3,7 +3,7 @@
 </script>
 
 <div class="chat-bubble {side}">
-	<slot name="text" />
+	<slot />
 </div>
 
 <style lang="postcss">

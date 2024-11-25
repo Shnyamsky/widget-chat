@@ -21,11 +21,13 @@
 <style lang="postcss">
 	.chat {
 		display: grid;
+		grid-template-rows: minmax(0, 1fr) auto auto;
 		grid-template-areas:
 			'chat-area'
 			'composer'
 			'footer';
 		width: 100%;
+		height: calc(var(--widget-max-height) - var(--header-height));
 
 		.chat-area {
 			grid-area: chat-area;
@@ -41,7 +43,7 @@
 				top: 0;
 				right: 0;
 				left: 0;
-				background-color: var(--chat-hr-color);
+				background-color: var(--chat-border-color);
 				height: 1px;
 				content: '';
 			}

@@ -3,11 +3,11 @@
 </script>
 
 <div class="header">
-	<AppIcon name="chatIcon" />
+	<AppIcon name="chatIcon" color="#fff" />
 	<h3 class="header-title">Have a question?</h3>
 
 	<button class="header-button">
-		<AppIcon name="closeIcon" />
+		<AppIcon name="closeIcon" color="#fff" />
 	</button>
 </div>
 
@@ -22,6 +22,7 @@
 		background-color: var(--header-bg);
 		padding: 12px var(--spacing-16);
 		width: 100%;
+		height: var(--header-height);
 	}
 
 	.header-title {
@@ -31,7 +32,6 @@
 	}
 
 	.header-button {
-		cursor: pointer;
 		background-color: transparent;
 		width: var(--button-size);
 		height: var(--button-size);

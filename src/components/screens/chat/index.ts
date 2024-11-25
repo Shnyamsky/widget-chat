@@ -1,3 +1,5 @@
+export { Answer } from './answer'
+export { Bubble } from './bubble'
 export { ChatArea } from './chat-area'
-export { ChatBubble } from './chat-bubble'
 export { Composer } from './composer'
+export { Question } from './question'

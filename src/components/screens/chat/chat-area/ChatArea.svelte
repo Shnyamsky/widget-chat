@@ -1,30 +1,39 @@
 <script lang="ts">
-	import { ChatBubble } from '../chat-bubble'
+	import { Answer } from '../answer'
+	import { Question } from '../question'
+
+	//TODO: refactor
+	let react: 'like' | 'dislike' | undefined = 'like'
+
+	let onLike = () => {
+		react = react !== 'like' ? 'like' : undefined
+	}
+
+	let onDislike = () => {
+		console.log(react)
+		react = react !== 'dislike' ? 'dislike' : undefined
+	}
 </script>
 
 <div class="chat-area-wrapper">
-	<ChatBubble side="left">
-		<p slot="text">
-			some text left some text left some text left some text left some text left some text left some
-			text left some text left
-		</p>
-	</ChatBubble>
+	<Question />
 
-	<ChatBubble side="right">
-		<p slot="text">
-			some text right some text right some text right some text right some text right some text
-			right some text right
+	<Answer {react} on:like={onLike} on:dislike={onDislike}>
+		<p>
+			Some answer text some answer text some answer text some answer text some answer text some
+			answer text
 		</p>
-	</ChatBubble>
+	</Answer>
 </div>
 
 <style lang="postcss">
 	.chat-area-wrapper {
-		--chat-area-height: 486px;
-
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-16);
 		padding: var(--spacing-16);
 		width: 100%;
-		height: var(--chat-area-height);
+		height: 100%;
 		overflow-y: scroll;
 	}
 </style>

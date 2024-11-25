@@ -21,7 +21,10 @@
 		textarea
 		maxRows={4}
 	/>
-	<Button type="submit"><AppIcon slot="icon" name="paperPlaneIcon" /></Button>
+
+	<Button type="submit">
+		<AppIcon slot="icon" name="paperPlaneIcon" color="var(--btn-primary-text)" />
+	</Button>
 </form>
 
 <style lang="postcss">

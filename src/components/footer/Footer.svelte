@@ -1,11 +1,6 @@
-<script lang="ts">
-	import { AppIcon } from '$components/index'
-</script>
-
 <footer class="footer-wrapper">
 	<p class="text">Powered by</p>
-
-	<AppIcon name="logoIcon" />
+	<img src="src/assets/img/logo.svg" alt="footer-logo" />
 </footer>
 
 <style lang="postcss">

@@ -67,6 +67,7 @@
 
 		--ripple-animation-duration: 0.8s;
 
+		cursor: default;
 		border-radius: var(--border-radius-4);
 		background-color: inherit;
 		overflow: hidden;
